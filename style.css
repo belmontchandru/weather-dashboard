@@ -12,31 +12,56 @@ body{
     margin: 20px auto;
     border-radius: 8px;
     max-width: 700px;
+    min-width: 350px;
 }
 
 .formContainer h2{
     text-align:center;
     color:#000000;
 }
+.get-location-details{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
 
-form {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 15px;
-    align-items: center;
+.get-location-details button {
+    font-size: 15px;
+    color:#ffffff;
+}
+
+.get-location-details > label, input, button {
+    margin: 10px;
 }
 
 label {
-    text-align: right;
-    padding-right: 10px;
+    text-align: center;
+    padding: 7px 0px 10px;
+    font-size: 18px;
     font-weight: bold;
+    flex: 1;
 }
 
-input[type="text"],
-select {
+input {
+    flex: 2;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+}
+
+.favorite-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.favorite-item{
+    background-color: #4C4E4E;
+    color: #ffffff;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button {
@@ -44,7 +69,7 @@ button {
     background-color: #4C4E4E;
     color:#ffffff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -55,18 +80,21 @@ button:hover {
 
 /* Weather Result Display Section */
 
-.temprature h1{
+.display-card {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    text-align: center;
+
+}
+.temperature h1{
     color:#000000;
     padding-left: 25px;
     font-size:45px;
 }
 
-/* #weather-display{
-    background: #E4E0E1;
-} */
-
 .weather-image{
-    width:70px;
+    width:130px;
 }
 
 .weather-image-display {
@@ -74,8 +102,56 @@ button:hover {
     justify-content: space-between;
 }
 
-.bookmark-icon{ 
-    width:30px;
-    cursor: pointer;
+.weather-container{
+    display: flex;
+    gap: 20px; 
+    padding: 20px;
 }
 
+@media (min-width: 375px) and (max-width: 654px) {
+    .formContainer {
+        width: 85%;
+    }
+    
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    
+    .formContainer {
+        text-align: center;
+    }
+    
+    h2 {
+        margin-bottom: 20px;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    label {
+        text-align: left;
+        font-weight: bold;
+    }
+    
+    input, select {
+        width: 90%;
+    }
+        
+    .weather-image-display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .weather-condition h3 {
+        margin-top: 10px;
+    }
+}

@@ -71,11 +71,22 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 1s;
 }
 
 button:hover {
     background-color: #949494;
     color:#ffffff;
+    transition: background-color 1s;
+}
+
+.weather-image {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.weather-image.fade-out {
+    opacity: 0;
 }
 
 /* Weather Result Display Section */

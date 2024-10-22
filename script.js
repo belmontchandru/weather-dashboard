@@ -42,58 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 weatherIcon.classList.remove("fade-out"); // Fade-in new image 1-second fade-out
             }, 1000);   
 
-
-            // Update weather icon based on the weather condition
-            switch (data.weather[0].main.toLowerCase()) {
-                case "clouds":
-                case "overcast clouds":
-                case "few clouds":
-                case "broken clouds":
-                    weatherIcon.src = "images/cloudy.png";
-                    break;
-                case "clear":
-                    weatherIcon.src = "images/clear-sky.png";
-                    break;
-                case "rain":
-                    weatherIcon.src = "images/rain.png";
-                    break;
-                case "snow":
-                    weatherIcon.src = "images/snow.png";
-                    break;
-                case "haze":
-                case "mist":
-                case "smoke":
-                case "sand/dust whirls":
-                case "fog":
-                case "sand":
-                case "dust":
-                case "volcanic ash":
-                case "squalls":
-                case "tornado":
-                    weatherIcon.src = "images/mist.png";
-                    break;
-
-                case "shower rain":
-                case "light rain":
-                case "moderate rain":
-                case "heavy intensity rain":
-                case "very heavy rain":
-                case "extreme rain":
-                case "freezing rain":
-                case "light intensity shower rain":
-                case "heavy intensity shower rain":
-                    weatherIcon.src = "images/shower-rain.png";
-                    break;
-                case "scattered clouds":
-                    weatherIcon.src = "images/scattered-clouds.png";
-                    break;
-                case "thunderstorms":
-                    weatherIcon.src = "images/thunderstorms.png";
-                    break;
-                default:
-                    weatherIcon.src = "images/default.png";
-                    break;
-            }
+            weatherIcon.src = `images/${data.weather[0]["icon"]}@2x.png`;
+            // weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0]["icon"]}@2x.png`;
 
 
             // Show the weather section after successful data fetch

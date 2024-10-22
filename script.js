@@ -6,19 +6,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const weatherIcon = document.querySelector("#weatherIcon");
     const weatherSection = document.querySelector(".weather");  // Select weather section to show later`
     const form = document.getElementById('locationForm');
-        const locationInput = document.getElementById('location');
-        const errorMessage = document.getElementById('error-message');
+    const locationInput = document.getElementById('location');
+    const errorMessage = document.getElementById('error-message');
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from submitting
-            if (locationInput.value.trim() === '') {
-                errorMessage.style.display = 'block';
-            } else {
-                errorMessage.style.display = 'none';
-                // Perform the search or other logic
-                alert('Searching for: ' + locationInput.value);
-            }
-        });
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting
+        if (locationInput.value.trim() === '') {
+            errorMessage.style.display = 'block';
+        } else {
+            errorMessage.style.display = 'none';
+            // Perform the search or other logic
+            alert('Searching for: ' + locationInput.value);
+        }
+    });
 
 
 
@@ -33,6 +34,14 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector("#weather-location").innerHTML = data.name;
             document.querySelector("#weather-temperature").innerHTML = Math.round(data.main.temp) + "°C";
             document.querySelector("#condition").innerHTML = data.weather[0].description;
+
+            // const newImageSrc = imageMap[weatherCondition] || "./images/default.png";
+            weatherIcon.classList.add("fade-out"); // Fade-out current image
+            setTimeout(() => {
+                // weatherImage.src = newImageSrc; // Change the image after the fade-out
+                weatherIcon.classList.remove("fade-out"); // Fade-in new image 1-second fade-out
+            }, 1000);   
+
 
             // Update weather icon based on the weather condition
             switch (data.weather[0].main.toLowerCase()) {

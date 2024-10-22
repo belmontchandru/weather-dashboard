@@ -1,4 +1,4 @@
-body {
+body{
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
@@ -15,12 +15,11 @@ body {
     min-width: 350px;
 }
 
-.formContainer h2 {
-    text-align: center;
-    color: #000000;
+.formContainer h2{
+    text-align:center;
+    color:#000000;
 }
-
-.get-location-details {
+.get-location-details{
     display: flex;
     justify-content: space-evenly;
     margin: 20px;
@@ -28,12 +27,10 @@ body {
 
 .get-location-details button {
     font-size: 15px;
-    color: #ffffff;
+    color:#ffffff;
 }
 
-.get-location-details > label,
-input,
-button {
+.get-location-details > label, input, button {
     margin: 10px;
 }
 
@@ -50,7 +47,6 @@ input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px; /* Merged duplicate declaration */
 }
 
 .favorite-container {
@@ -59,7 +55,7 @@ input {
     border-radius: 5px;
 }
 
-.favorite-item {
+.favorite-item{
     background-color: #4C4E4E;
     color: #ffffff;
     margin: 5px;
@@ -71,7 +67,7 @@ input {
 button {
     padding: 10px 15px;
     background-color: #4C4E4E;
-    color: #ffffff;
+    color:#ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -84,41 +80,42 @@ button:hover {
     transition: background-color 1s;
 }
 
-.weather-image {
+#weatherIcon {
     opacity: 1;
     transition: opacity 1s ease-in-out;
 }
 
-.weather-image.fade-out {
+#weatherIcon .fade-out {
     opacity: 0;
 }
 
 /* Weather Result Display Section */
+
 .display-card {
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     align-items: center;
     text-align: center;
-}
 
-.temperature h1 {
-    color: #000000;
+}
+.temperature h1{
+    color:#000000;
     padding-left: 25px;
-    font-size: 45px;
+    font-size:45px;
 }
 
-.weather-image {
-    width: 130px;
+#weatherIcon{
+    width:130px;
 }
 
 .weather-image-display {
-    display: flex;
+    display:flex;
     justify-content: space-between;
 }
 
-.weather-container {
+.weather-container{
     display: flex;
-    gap: 20px;
+    gap: 20px; 
     padding: 20px;
 }
 
@@ -126,7 +123,7 @@ button:hover {
     .formContainer {
         width: 85%;
     }
-
+    
     body {
         display: flex;
         justify-content: center;
@@ -134,38 +131,37 @@ button:hover {
         height: 100vh;
         background-color: #f0f0f0;
     }
-
+    
     .formContainer {
         text-align: center;
     }
-
+    
     h2 {
         margin-bottom: 20px;
     }
-
+    
     form {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-
+    
     label {
         text-align: left;
         font-weight: bold;
     }
-
-    input,
-    select {
+    
+    input, select {
         width: 90%;
     }
-
+        
     .weather-image-display {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 10px;
     }
-
+    
     .weather-condition h3 {
         margin-top: 10px;
     }
@@ -176,14 +172,12 @@ button:hover {
     display: none;
     margin-top: 20px;
 }
-
 /* Corrected .error class */
 .error {
     color: rgb(222, 35, 35);
     font-size: 14px;
     display: none;
 }
-
 .error-message {
     color: rgb(218, 33, 33);
     text-align: center;

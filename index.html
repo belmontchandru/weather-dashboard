@@ -13,6 +13,12 @@
         <h2>Weather Dashboard</h2>
         <!-- Single form for the entire weather dashboard -->
         <form id="locationForm">
+            <div class="favorite-container">
+                <button class="favorite-item">Pondicherry</button>
+                <button class="favorite-item">Chennai</button>
+                <button class="favorite-item">Banglore</button>
+                <button class="favorite-item">Pune</button>
+            </div>
             <div class="get-location-details">
                 <label for="location">Location:</label>
                 <input type="text" id="location" name="location" placeholder="Enter location">
@@ -22,7 +28,7 @@
             <div id="error-message" class="error" style="display: none;">Couldn't find your location</div>
 
             <!-- Weather section, hidden until search is successful -->
-            <div class="weather" style="display: none;">
+            <div class="display-card weather" style="display: none;">
                 <div class="weather-container">
                     <div class="weather-image-display">
                         <img id="weatherIcon" class="weather-image" src="./images/default.png" alt="Weather Icon">
@@ -36,15 +42,6 @@
                     <h3 id="weather-location"></h3>
                 </div>
                 <button class="favorite-btn" type="button">Add Favorite</button>
-
-
-                <!-- Favorite locations section -->
-                <div class="favorite-container">
-                    <button type="button" class="favorite-item">Puducherry</button>
-                    <button type="button" class="favorite-item">Chennai</button>
-                    <button type="button" class="favorite-item">Bangalore</button>
-                    <button type="button" class="favorite-item">Pune</button>
-                </div>
             </div>
         </form>
     </section>

@@ -5,29 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    </link>
     <title>Weather Dashboard</title>
 </head>
 
 <body>
     <section class="formContainer">
         <h2>Weather Dashboard</h2>
-        <form action="">
-            <div class="favorite-container">
-                <button class="favorite-item">Pondicherry</button>
-                <button class="favorite-item">Chennai</button>
-                <button class="favorite-item">Banglore</button>
-                <button class="favorite-item">Pune</button>
-            </div>
+        <!-- Single form for the entire weather dashboard -->
+        <form id="locationForm">
             <div class="get-location-details">
                 <label for="location">Location:</label>
                 <input type="text" id="location" name="location" placeholder="Enter location">
                 <button id="search" type="submit">Search</button>
             </div>
-            <div class="display-card">
+
+            <div id="error-message" class="error" style="display: none;">Couldn't find your location</div>
+
+            <!-- Weather section, hidden until search is successful -->
+            <div class="weather" style="display: none;">
                 <div class="weather-container">
                     <div class="weather-image-display">
-                        <img class="weather-image" src="./images/rainy-day.png" alt="Rainy Day">
+                        <img id="weatherIcon" class="weather-image" src="./images/default.png" alt="Weather Icon">
                     </div>
                     <div class="temperature">
                         <h1 id="weather-temperature"></h1>
@@ -37,7 +35,16 @@
                     <h3 id="condition"></h3>
                     <h3 id="weather-location"></h3>
                 </div>
-                <button Class="favorite-btn">Add Favorite</button>
+                <button class="favorite-btn" type="button">Add Favorite</button>
+
+
+                <!-- Favorite locations section -->
+                <div class="favorite-container">
+                    <button type="button" class="favorite-item">Puducherry</button>
+                    <button type="button" class="favorite-item">Chennai</button>
+                    <button type="button" class="favorite-item">Bangalore</button>
+                    <button type="button" class="favorite-item">Pune</button>
+                </div>
             </div>
         </form>
     </section>

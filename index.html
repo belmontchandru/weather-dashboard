@@ -13,12 +13,13 @@
         <h2>Weather Dashboard</h2>
         <!-- Single form for the entire weather dashboard -->
         <form id="locationForm">
-            <div class="favorite-container">
+            <div class="favorite-container" style="display: none;"></div>
+            <!-- <div class="favorite-container">
                 <button class="favorite-item">Pondicherry</button>
                 <button class="favorite-item">Chennai</button>
                 <button class="favorite-item">Banglore</button>
                 <button class="favorite-item">Pune</button>
-            </div>
+            </div> -->
             <div class="get-location-details">
                 <label for="location">Location:</label>
                 <input type="text" id="location" name="location" placeholder="Enter location">
@@ -41,7 +42,7 @@
                     <h3 id="condition"></h3>
                     <h3 id="weather-location"></h3>
                 </div>
-                <button class="favorite-btn" type="button">Add Favorite</button>
+                <button class="favorite-btn" type="addLocation">Add Favorite</button>
             </div>
         </form>
     </section>

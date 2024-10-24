@@ -117,6 +117,7 @@ button:hover {
     display: flex;
     gap: 20px; 
     padding: 20px;
+    justify-content: center;
 }
 
 @media (min-width: 375px) and (max-width: 654px) {

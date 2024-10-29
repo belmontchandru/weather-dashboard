@@ -2,30 +2,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const apiKey = "13c8537140a918df1aa1b90fc7f2c1d4";
     const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
     const searchBox = document.querySelector("#location");
-    // const searchBtn = document.querySelector(".get-location-details button");
+    const searchBtn = document.querySelector(".get-location-details button");
     const weatherIcon = document.querySelector("#weatherIcon");
     const weatherSection = document.querySelector(".weather");
     const form = document.getElementById('locationForm');
     const errorMessage = document.getElementById('error-message');
     const favoriteContainer = document.querySelector('.favorite-container');
-
+    let refreshIntervalId;
     
-    let favoriteCities = JSON.parse(localStorage.getItem('favoriteCities')) || [];    // Load favoriteCities from local storage
+    let favoriteCities = JSON.parse(localStorage.getItem('favoriteCities')) || [];
     displayFavoriteCities();
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         if (searchBox.value.trim() === '') {
+            errorMessage.textContent = 'Please enter a city name.';
             errorMessage.style.display = 'block';
+            searchBox.style.border = '2px solid red';
         } else {
             errorMessage.style.display = 'none';
+            searchBox.style.border = '';
             checkWeather(searchBox.value);
+            startAutoRefresh(searchBox.value);
+        }
+    });
+
+    searchBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (searchBox.value.trim() === '') {
+            errorMessage.textContent = 'Please enter a city name.';
+            errorMessage.style.display = 'block';
+            searchBox.style.border = '2px solid red';
+        } else {
+            errorMessage.style.display = 'none';
+            searchBox.style.border = '';
+            checkWeather(searchBox.value);
+            startAutoRefresh(searchBox.value);
         }
     });
 
     async function checkWeather(city) {
         try {
-            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+            const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`);
             if (!response.ok) {
                 throw new Error("City not found");
             }
@@ -34,16 +52,26 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector("#weather-location").innerHTML = data.name;
             document.querySelector("#weather-temperature").innerHTML = Math.round(data.main.temp) + "°C";
             document.querySelector("#condition").innerHTML = data.weather[0].description;
-            
-            weatherIcon.src = `images/${data.weather[0]["icon"]}@2x.png`;
+            weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0]["icon"]}@2x.png`;
 
-            weatherSection.style.display = "block";          //  Show weather-section after API Responce
+            weatherSection.style.display = "block";
+            searchBox.style.border = '';
         } catch (error) {
-            alert("Couldn't find city: " + error.message);
+            errorMessage.textContent = "Couldn't find your city, please give the correct city name.";
+            errorMessage.style.display = 'block';
+            searchBox.style.border = '2px solid red';
         }
     }
 
-        //      onclicking favorite button
+    function startAutoRefresh(city) {
+        if (refreshIntervalId) {
+            clearInterval(refreshIntervalId);
+        }
+        refreshIntervalId = setInterval(() => {
+            checkWeather(city);
+        }, 300000); // Set interval for 5 minutes
+    }
+
     document.querySelector('.favorite-btn').addEventListener('click', function() {
         const locationName = document.querySelector("#weather-location").innerHTML;
         if (locationName && !favoriteCities.includes(locationName)) {
@@ -59,9 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-            //      Display favorite locations
     function displayFavoriteCities() {
-        favoriteContainer.innerHTML = '';               //  Clear existing favoriteCities
+        favoriteContainer.innerHTML = '';
         if (favoriteCities.length > 0) {
             favoriteContainer.style.display = 'flex'; 
             favoriteCities.forEach(location => {
@@ -72,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 favoriteContainer.appendChild(favoriteButton);
             });
         } else {
-            favoriteContainer.style.display = 'none';               // Hide if no favoriteCities
+            favoriteContainer.style.display = 'none';
         }
     }
 });

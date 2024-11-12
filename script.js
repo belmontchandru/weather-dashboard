@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () { 
     const apiKey = "13c8537140a918df1aa1b90fc7f2c1d4";
     const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
     const searchBox = document.querySelector("#location");
@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const errorMessage = document.getElementById('error-message');
     const favoriteContainer = document.querySelector('.favorite-container');
     let refreshIntervalId;
-    
+
     let favoriteCities = JSON.parse(localStorage.getItem('favoriteCities')) || [];
     displayFavoriteCities();
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
         if (searchBox.value.trim() === '') {
             errorMessage.textContent = 'Please enter a city name.';
@@ -69,10 +69,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         refreshIntervalId = setInterval(() => {
             checkWeather(city);
-        }, 300000); // Set interval for 5 minutes
+        }, 60000); // Set interval for 5 minutes
     }
 
-    document.querySelector('.favorite-btn').addEventListener('click', function() {
+    document.querySelector('.favorite-btn').addEventListener('click', function () {
         const locationName = document.querySelector("#weather-location").innerHTML;
         if (locationName && !favoriteCities.includes(locationName)) {
             if (favoriteCities.length < 4) {
@@ -90,16 +90,34 @@ document.addEventListener("DOMContentLoaded", function () {
     function displayFavoriteCities() {
         favoriteContainer.innerHTML = '';
         if (favoriteCities.length > 0) {
-            favoriteContainer.style.display = 'flex'; 
-            favoriteCities.forEach(location => {
-                const favoriteButton = document.createElement('button');
-                favoriteButton.className = 'favorite-item';
-                favoriteButton.innerText = location;
-                favoriteButton.onclick = () => alert(`Selected favorite: ${location}`);
-                favoriteContainer.appendChild(favoriteButton);
+            favoriteContainer.style.display = 'flex';
+            favoriteCities.forEach((location, index) => {
+                const favoriteItem = document.createElement('div');
+                favoriteItem.className = 'favorite-item';
+
+                const locationButton = document.createElement('button');
+                locationButton.innerText = location;
+                locationButton.onclick = () => alert(`Selected favorite: ${location}`);
+                
+                // Create the "X" mark button
+                const removeButton = document.createElement('button');
+                removeButton.className = 'remove-btn';
+                removeButton.innerHTML = '&times;';  // Using "×" as the icon
+                removeButton.onclick = () => removeFavoriteCity(index);
+
+                favoriteItem.appendChild(locationButton);
+                favoriteItem.appendChild(removeButton);
+                favoriteContainer.appendChild(favoriteItem);
             });
         } else {
             favoriteContainer.style.display = 'none';
         }
     }
+
+    function removeFavoriteCity(index) {
+        favoriteCities.splice(index, 1);
+        localStorage.setItem('favoriteCities', JSON.stringify(favoriteCities));
+        displayFavoriteCities();
+    }
 });
+``

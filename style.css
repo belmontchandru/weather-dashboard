@@ -4,6 +4,9 @@ body{
     padding: 0;
     justify-content: center;
     align-items: center;
+    display: flex;
+    height: 100vh;
+    background: #f7f7f7;
 }
 
 .formContainer {
@@ -11,13 +14,16 @@ body{
     padding: 20px;
     margin: 20px auto;
     border-radius: 8px;
-    max-width: 700px;
+    /* max-width: 700px; */
     min-width: 350px;
+    max-width: 800px;
+    width: 100%;
 }
 
 .formContainer h2{
     text-align:center;
     color:#000000;
+    margin-bottom: 20px;
 }
 .get-location-details{
     display: flex;
@@ -25,14 +31,18 @@ body{
     margin: 20px;
 }
 
+.favorite-btn{
+    padding: 10px;
+}
+
 .get-location-details button {
     font-size: 15px;
     color:#ffffff;
 }
 
-.get-location-details > label, input, button {
+/* .get-location-details > label, input, button {
     margin: 10px;
-}
+} */
 
 label {
     text-align: center;
@@ -59,13 +69,13 @@ input {
     background-color: #4C4E4E;
     color: #ffffff;
     margin: 5px;
-    padding: 10px 15px;
+    padding: 5px;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 5px;
     background-color: #4C4E4E;
     color:#ffffff;
     border: none;
@@ -80,13 +90,21 @@ button:hover {
     transition: background-color 1s;
 }
 
+.remove-btn{
+    color:#ffffff;
+}
+
 #weatherIcon {
     opacity: 1;
     transition: opacity 1s ease-in-out;
 }
 
-#weatherIcon .fade-out {
+.fade-out {
     opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
 }
 
 /* Weather Result Display Section */
@@ -178,6 +196,7 @@ button:hover {
     color: rgb(222, 35, 35);
     font-size: 14px;
     display: none;
+    text-align: center;
 }
 .error-message {
     color: rgb(218, 33, 33);

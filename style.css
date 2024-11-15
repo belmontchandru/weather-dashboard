@@ -53,10 +53,11 @@ label {
 }
 
 input {
-    flex: 2;
+    flex: 3;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 .favorite-container {
@@ -74,6 +75,10 @@ input {
     cursor: pointer;
 }
 
+#search{
+    flex: 1;
+}
+
 button {
     padding: 5px;
     background-color: #4C4E4E;
@@ -81,7 +86,6 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 1s;
 }
 
 button:hover {
@@ -138,7 +142,7 @@ button:hover {
     justify-content: center;
 }
 
-@media (min-width: 375px) and (max-width: 654px) {
+@media (min-width: 476px) and (max-width: 654px) {
     .formContainer {
         width: 85%;
     }
@@ -168,6 +172,7 @@ button:hover {
     label {
         text-align: left;
         font-weight: bold;
+        margin-right: 10px;
     }
     
     input, select {
@@ -186,18 +191,39 @@ button:hover {
     }
 }
 
-/* Initially hide the weather information and favorite section */
+@media (min-width: 375px) and (max-width: 475px) {
+    .get-location-details {
+        flex-direction: column;
+    }
+    #search {
+        flex: 1;
+        width: 30%;
+        margin: 5px auto;
+    }
+
+    input{
+        margin: 20px;
+    }
+
+    .favorite-container{
+        flex-direction: column;
+        max-width: 120px;
+    }
+
+}
+
 .weather {
     display: none;
     margin-top: 20px;
 }
-/* Corrected .error class */
+
 .error {
     color: rgb(222, 35, 35);
     font-size: 14px;
     display: none;
     text-align: center;
 }
+
 .error-message {
     color: rgb(218, 33, 33);
     text-align: center;
